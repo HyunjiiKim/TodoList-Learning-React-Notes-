@@ -1,0 +1,22 @@
+/*Search bar style*/
+.TodoList .Searchbar{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(220,220,220);
+    box-sizing: border-box;
+    padding: 15 auto;
+}
+
+/*Using Search bar*/
+.TodoList .Searchbar:focus{
+    outline: none;
+    border-bottom: 1px solid #1F93ff;
+}
+
+/*Algin Todo Items*/
+.TodoList .listWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
