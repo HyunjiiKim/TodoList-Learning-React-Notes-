@@ -34,6 +34,16 @@ function reducer(state, action){
     case "CREATE":{
       return [action.newItem, ...state];
     }
+    case "UPDATE":{
+      return state.map((it)=>
+      it.id===action.targetId
+      ? {
+        ...it,
+        isDone: !it.isDone,
+      }
+      : it
+      );
+    }
     default: 
     return state;
   }
@@ -61,6 +71,10 @@ function App() {
 
   //Update
   const onUpdate = (targetId) => {
+    dispatch({
+      type:"UPDATE",
+      targetId,
+    })
     
   };
 
