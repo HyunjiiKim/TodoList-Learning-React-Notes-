@@ -22,10 +22,29 @@ const TodoList = ({todo, onUpdate, onDelete}) =>{
             it.content.toLowerCase().includes(search.toLowerCase()));
     };
 
+    const analyzeTodo = () =>{
+        console.log("Call analyseTodo()");
+        const totalCount = todo.length;
+        const doneCount = todo.filter((it)=>it.isDone).length;
+        const notDoneCount = totalCount - doneCount;
+        return{
+            totalCount,
+            doneCount,
+            notDoneCount,
+        };
+    };
+
+    const {totalCount, doneCount, notDoneCount} = analyzeTodo();
+
 
     return (
     <div className='TodoList'>
         <h4>Todo List</h4>
+        <div>
+            <div>Total : {totalCount}</div>
+            <div>Done: {doneCount}</div>
+            <div>To do: {notDoneCount}</div>
+        </div>
         <input className='Searchbar'
         value={search}
         onChange={onChangeSearch}
