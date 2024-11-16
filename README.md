@@ -1,7 +1,7 @@
 # TodoList-Learning-React-Notes
  # React Learning Notes
 
-Welcome to my React learning repository! This repository contains my notes, thoughts, and code examples based on the book [*Book Title*]. As I learn more about React, I’ll be documenting the important concepts, patterns, and techniques I come across.
+Welcome to my React learning repository! This repository contains my notes, thoughts, and code examples based on the book [*한 입 크기로 잘라 먹는 리액트*](https://reactjs.winterlood.com). As I learn more about React, I’ll be documenting the important concepts, patterns, and techniques I come across.
 
 ## 📚 What’s Inside
 
