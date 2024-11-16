@@ -6,7 +6,7 @@ import './TodoList.css';
 import { useState } from 'react';
 
 
-const TodoList = ({todo, onUpdate}) =>{
+const TodoList = ({todo, onUpdate, onDelete}) =>{
     
     //create Search
     const [search,setSearch] = useState("");
@@ -32,7 +32,7 @@ const TodoList = ({todo, onUpdate}) =>{
         placeholder='Search Item(s)...'/>
         <div className='listWrapper'>
             {getSearchResult().map((it) => (
-                <TodoItem key={it.id} {...it} onUpdate={onUpdate}/>
+                <TodoItem key={it.id} {...it} onUpdate={onUpdate} onDelete={onDelete}/>
             ))}
         </div>
     </div>)
