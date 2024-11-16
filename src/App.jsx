@@ -1,7 +1,7 @@
 import './App.css'
 
 //react hooks
-import { useState, useRef } from 'react'
+import { useReducer, useRef } from 'react'
 
 //components
 import Header from './Component/Header'
@@ -29,38 +29,44 @@ const mockTodo = [
   }
 ];
 
+function reducer(state, action){
+  switch(action.type){
+    case "CREATE":{
+      return [action.newItem, ...state];
+    }
+    default: 
+    return state;
+  }
+}
+
 function App() {
 
 
-  const [todo,setTodo] = useState(mockTodo);
+  const [todo,dispatch] = useReducer(reducer, mockTodo);
 
   //Create
   const idRef = useRef(3);
   const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      content,
-      isDone: false,
-      createdOn: new Date().getTime(),
-    };
-    setTodo([newItem, ...todo]);
-    idRef.current+=1;
+    dispatch({
+      type:"CREATE",
+      newItem: {
+        id:idRef.current,
+        content,
+        isDone:false,
+        createdOn: new Date().getTime(),
+      },
+    });
+    idRef.current +=1;
   }
 
   //Update
   const onUpdate = (targetId) => {
-    setTodo(
-      todo.map((it) => 
-          it.id===targetId ? {...it, isDone: !it.isDone} : it
-        
-      )
-    );
+    
   };
 
   //Delete
   const onDelete = (targetId) => {
-    setTodo(
-      todo.filter((it) => it.id !== targetId));
+   
   };
 
 
