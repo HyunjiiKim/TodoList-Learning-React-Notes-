@@ -1,15 +1,39 @@
+//import components
 import TodoItem from './TodoItem';
+//stylesheet
 import './TodoList.css';
+//react hooks
+import { useState } from 'react';
 
-const TodoList = () =>{
+
+const TodoList = ({todo}) =>{
+    
+    //create Search
+    const [search,setSearch] = useState("");
+    const onChangeSearch = (e) => {
+        setSearch(e.target.value);
+    }
+
+    //implement filter
+    const getSearchResult = () => {
+        return search ===''
+        ? todo
+        : todo.filter((it)=>
+            it.content.toLowerCase().includes(search.toLowerCase()));
+    };
+
+
     return (
     <div className='TodoList'>
         <h4>Todo List</h4>
-        <input className='Searchbar' placeholder='Search Item(s)...'/>
+        <input className='Searchbar'
+        value={search}
+        onChange={onChangeSearch}
+        placeholder='Search Item(s)...'/>
         <div className='listWrapper'>
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+            {getSearchResult().map((it) => (
+                <TodoItem key={it.id} {...it}/>
+            ))}
         </div>
     </div>)
 };
