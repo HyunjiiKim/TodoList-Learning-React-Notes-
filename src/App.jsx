@@ -30,9 +30,11 @@ const mockTodo = [
 ];
 
 function App() {
-  
+
+
   const [todo,setTodo] = useState(mockTodo);
 
+  //Create
   const idRef = useRef(3);
   const onCreate = (content) => {
     const newItem = {
@@ -45,11 +47,22 @@ function App() {
     idRef.current+=1;
   }
 
+  //Update
+  const onUpdate = (targetId) => {
+    setTodo(
+      todo.map((it) => 
+          it.id===targetId ? {...it, isDone: !it.isDone} : it
+        
+      )
+    );
+  };
+
+
   return (
     <div className='App'>
       <Header />
       <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo} />
+      <TodoList todo={todo} onUpdate={onUpdate}/>
     </div>
   )
 }
