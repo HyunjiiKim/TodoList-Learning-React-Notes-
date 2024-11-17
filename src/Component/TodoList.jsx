@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 //stylesheet
 import './TodoList.css';
 //react hooks
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 
 const TodoList = ({todo, onUpdate, onDelete}) =>{
@@ -22,8 +22,9 @@ const TodoList = ({todo, onUpdate, onDelete}) =>{
             it.content.toLowerCase().includes(search.toLowerCase()));
     };
 
-    const analyzeTodo = () =>{
-        console.log("Call analyseTodo()");
+    const analyzeTodo = useMemo(() =>{
+        //console.log("Call analyseTodo()");
+        
         const totalCount = todo.length;
         const doneCount = todo.filter((it)=>it.isDone).length;
         const notDoneCount = totalCount - doneCount;
@@ -32,9 +33,9 @@ const TodoList = ({todo, onUpdate, onDelete}) =>{
             doneCount,
             notDoneCount,
         };
-    };
+    },[todo]);
 
-    const {totalCount, doneCount, notDoneCount} = analyzeTodo();
+    const {totalCount, doneCount, notDoneCount} = analyzeTodo;
 
 
     return (

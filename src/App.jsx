@@ -34,6 +34,14 @@ function reducer(state, action){
     case "CREATE":{
       return [action.newItem, ...state];
     }
+
+
+
+
+
+
+
+    
     case "UPDATE":{
       return state.map((it)=>
       it.id===action.targetId
