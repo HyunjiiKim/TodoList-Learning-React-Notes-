@@ -1,7 +1,7 @@
 import './App.css'
 
 //react hooks
-import { useReducer, useRef } from 'react'
+import { useCallback, useReducer, useRef } from 'react'
 
 //components
 import Header from './Component/Header'
@@ -34,13 +34,6 @@ function reducer(state, action){
     case "CREATE":{
       return [action.newItem, ...state];
     }
-
-
-
-
-
-
-
     
     case "UPDATE":{
       return state.map((it)=>
@@ -83,21 +76,21 @@ function App() {
   }
 
   //Update
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type:"UPDATE",
       targetId,
     })
     
-  };
+  },[]);
 
   //Delete
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type:"DELETE",
       targetId,
     })
-  };
+  },[]);
 
 
   return (
