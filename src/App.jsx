@@ -7,6 +7,7 @@ import { useCallback, useReducer, useRef } from 'react'
 import Header from './Component/Header'
 import TodoEditor from './Component/TodoEditor'
 import TodoList from './Component/TodoList'
+import Button from './Component/Button'
 
 const mockTodo = [
   {
@@ -96,6 +97,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
+      <Button />
       <TodoEditor onCreate={onCreate}/>
       <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
