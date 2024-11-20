@@ -1,65 +1,54 @@
 import './TodoEditor.css';
 
-import React,{ useState,useRef } from "react";
+import { useState,useRef } from "react";
 
 
-const NewItem = ({onClose,onCreate}) =>{
+const NewItem = ({onClose}) =>{
     console.log("NewItem Called")
 
-  
-    const [Content,setContent] = useState("");
-    const onChangeContent = (e) =>{
-        setContent(e.target.value);
+    const createdDate = new Date().toLocaleDateString();
+    const completedDate = new Date().toLocaleDateString()
+
+
+    // implement useState for input tags (title, tag, description)
+    const [title,setTitle] = useState("");
+    const onChangeTitle = (e) =>{
+        setTitle(e.target.value);
     }
+
+    const [tag,setTag] = useState("");
+    const onChangeTag = (e) =>{
+        setTag(e.target.value);
+    }
+
+    const [description,setDescription] = useState("");
+    const onChangeDescription = (e) =>{
+        setDescription(e.target.value);
+    }
+
     const inputRef=useRef();
  
-    function onSubmit(){
-        onCreate(Content);
-    };
 
     return(
         <div className='modalBox center'>
-            <form className='form'>
-                <input className='h4' type='text' placeholder="New Item..." value={Content} onChange={onChangeContent} ref={inputRef}/>
+            <div className='form'>
+                <input type='text' placeholder="New Item..." value={title} onChange={onChangeTitle} ref={inputRef}/>
                 <div>
-                    <div>
-                        <label htmlFor='CreatedDate'>Created on: </label>
-                        <input type='date' onChange={onChangeContent} name='CreatedDate' />
-                    </div>
-                    <div>
-                        <label htmlFor='CompletedDate'>Completed on: </label>
-                        <input type='date' onChange={onChangeContent} name='CompletedDate' />
-                    </div>
+                    <p>Created on: {createdDate}</p>
+                    <p>Completed on: {completedDate}</p>
+                </div>
+                <div className='tag'>
+                    Tags : <input type='text' value={tag} onChange={onChangeTag}/>
                 </div>
                 <div>
-                    <label htmlFor='importance'>Importance: </label>
-                    <div>
-                        <input type='radio' name='importance' value='1'/>
-                        <label htmlFor='importance'>Very Important</label>
-                    </div>
-                    <div>
-                        <input type='radio' name='importance' value='2'/>
-                        <label htmlhtmlFor='importance'>Important</label>
-                    </div>
-                    <div>
-                        <input type='radio' name='importance' value='3'/>
-                        <label htmlFor='importance'>Not Important</label>
-                    </div>
-                    
-                    
+                    <h4>Description</h4>
+                    <input type='textarea' value={description} onChange={onChangeDescription} />
                 </div>
-                <div>
-                    <label>Tags</label>
-                    <input type='text'/>
-                </div>
-                <label>Description</label>
-                <input type='textarea' />
                 <div className='GrpBtn'>
+                    <button className='BtnBlue' onClick={onClose}>Save</button>
                     <button className='BtnWhite' onClick={onClose}>Cancel</button>
-                    <button className='BtnBlue' onClick={()=>{onClose;onSubmit;}}>Save</button>
                 </div>
-
-            </form>
+            </div>
         </div>
     )
 }

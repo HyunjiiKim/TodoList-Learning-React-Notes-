@@ -1,7 +1,7 @@
 import './App.css'
 
 //react hooks
-import { useCallback, useReducer, useRef } from 'react'
+import React,{ useCallback, useReducer, useRef,useState } from 'react'
 
 //components
 import Header from './Component/Header'
@@ -56,6 +56,8 @@ function reducer(state, action){
   }
 }
 
+const TodoContext = React.createContext();
+
 function App() {
 
 
@@ -93,13 +95,22 @@ function App() {
     })
   },[]);
 
+  //show Modal
+  const [showModal, setShowModal]=useState(false);
+
+  //close Modal
+  const onClose = (e)=>{
+    setShowModal(e.target.value);
+  }
 
   return (
     <div className='App'>
       <Header />
+      <TodoContext.Provider value={{todo, onCreate, onUpdate, onDelete}}>
       <Button />
-      <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
+      <TodoEditor/>
+      <TodoList/>
+      </TodoContext.Provider>
     </div>
   )
 }
