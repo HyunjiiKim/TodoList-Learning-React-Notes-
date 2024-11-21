@@ -3,11 +3,15 @@ import TodoItem from './TodoItem';
 //stylesheet
 import './TodoList.css';
 //react hooks
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useContext } from 'react';
 import React from 'react';
+import { TodoContext } from '../App';
 
 
 const TodoList = ({todo, onUpdate, onDelete}) =>{
+
+    const storeData=useContext(TodoContext);
+    console.log(storeData);
     
     //create Search
     const [search,setSearch] = useState("");

@@ -56,7 +56,7 @@ function reducer(state, action){
   }
 }
 
-const TodoContext = React.createContext();
+export const TodoContext = React.createContext();
 
 function App() {
 
