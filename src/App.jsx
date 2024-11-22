@@ -108,7 +108,7 @@ function App() {
       <Header />
       <TodoContext.Provider value={{todo, onCreate, onUpdate, onDelete}}>
       <Button />
-      <TodoEditor/>
+      <TodoEditor onCreate={onCreate}/>
       <TodoList/>
       </TodoContext.Provider>
     </div>

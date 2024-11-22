@@ -8,7 +8,7 @@ import React from 'react';
 import { TodoContext } from '../App';
 
 
-const TodoList = ({todo, onUpdate, onDelete}) =>{
+const TodoList = ({todo = []}) => {
 
     const storeData=useContext(TodoContext);
     console.log(storeData);
@@ -62,9 +62,5 @@ const TodoList = ({todo, onUpdate, onDelete}) =>{
         </div>
     </div>)
 };
-
-TodoList.defaultProps={
-todo:[],
-}
 
 export default TodoList;
