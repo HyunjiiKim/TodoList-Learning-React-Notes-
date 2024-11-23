@@ -8,10 +8,11 @@ import React from 'react';
 import { TodoContext } from '../App';
 
 
-const TodoList = ({todo = []}) => {
+const TodoList = () => {
 
-    const storeData=useContext(TodoContext);
-    console.log(storeData);
+    const {todo} = useContext(TodoContext);
+    //const storeData=useContext(TodoContext);
+    //console.log(storeData);
     
     //create Search
     const [search,setSearch] = useState("");
@@ -57,7 +58,7 @@ const TodoList = ({todo = []}) => {
         placeholder='Search Item(s)...'/>
         <div className='listWrapper'>
             {getSearchResult().map((it) => (
-                <TodoItem key={it.id} {...it} onUpdate={onUpdate} onDelete={onDelete}/>
+                <TodoItem key={it.id} {...it} />
             ))}
         </div>
     </div>)

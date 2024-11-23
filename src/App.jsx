@@ -8,6 +8,7 @@ import Header from './Component/Header'
 import TodoEditor from './Component/TodoEditor'
 import TodoList from './Component/TodoList'
 import Button from './Component/Button'
+import NewItem from './Component/NewItem'
 
 const mockTodo = [
   {

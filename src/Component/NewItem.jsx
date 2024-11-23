@@ -27,6 +27,10 @@ const NewItem = ({onClose}) =>{
     }
 
     const inputRef=useRef();
+
+    const keyDown = (e) =>{
+
+    }
  
 
     return(
