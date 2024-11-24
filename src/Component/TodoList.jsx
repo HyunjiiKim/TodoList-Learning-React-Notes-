@@ -5,12 +5,12 @@ import './TodoList.css';
 //react hooks
 import { useState, useMemo, useContext } from 'react';
 import React from 'react';
-import { TodoContext } from '../App';
+import { TodoStateContext } from '../App';
 
 
 const TodoList = () => {
 
-    const {todo} = useContext(TodoContext);
+    const todo = useContext(TodoStateContext);
     //const storeData=useContext(TodoContext);
     //console.log(storeData);
     

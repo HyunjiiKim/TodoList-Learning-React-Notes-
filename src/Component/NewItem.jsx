@@ -29,7 +29,9 @@ const NewItem = ({onClose}) =>{
     const inputRef=useRef();
 
     const keyDown = (e) =>{
-
+        if(e.keyDown===13){
+            onSubmit();
+        }
     }
  
 

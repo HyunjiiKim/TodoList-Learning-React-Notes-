@@ -2,11 +2,11 @@
 import './TodoEditor.css';
 //import Reacthooks
 import { useRef,useState,useContext } from 'react';
-import { TodoContext } from '../App';
+import { TodoDispatchContext } from '../App';
 
 const TodoEditor = () => {
 
-    const {onCreate} = useContext(TodoContext);
+    const {onCreate} = useContext(TodoDispatchContext);
     
     // Handling Event on input
     const [content, setContent] = useState("");

@@ -1,14 +1,13 @@
 import './App.css'
 
 //react hooks
-import React,{ useCallback, useReducer, useRef,useState } from 'react'
+import React,{ useCallback, useReducer, useRef,useState,useMemo } from 'react'
 
 //components
 import Header from './Component/Header'
 import TodoEditor from './Component/TodoEditor'
 import TodoList from './Component/TodoList'
-import Button from './Component/Button'
-import NewItem from './Component/NewItem'
+
 
 const mockTodo = [
   {
@@ -57,7 +56,9 @@ function reducer(state, action){
   }
 }
 
-export const TodoContext = React.createContext();
+export const TodoStateContext = React.createContext();
+export const TodoDispatchContext = React.createContext();
+
 
 function App() {
 
@@ -104,14 +105,22 @@ function App() {
     setShowModal(e.target.value);
   }
 
+  const memorizedDispatches = useMemo(()=>{
+    return {onCreate, onUpdate, onDelete};}
+    , []);
+  
+
   return (
     <div className='App'>
       <Header />
-      <TodoContext.Provider value={{todo, onCreate, onUpdate, onDelete}}>
-      <Button />
+      <TodoStateContext.Provider value={todo}> 
+      <TodoDispatchContext.Provider value={memorizedDispatches}>
       <TodoEditor onCreate={onCreate}/>
       <TodoList/>
-      </TodoContext.Provider>
+      </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
+      
+      
     </div>
   )
 }
